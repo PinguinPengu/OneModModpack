@@ -14,6 +14,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.pinguinpengu.modpackmod.item.ModItems;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -28,7 +29,8 @@ public class OneModModpack
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        // Register the commonSetup method for modloading
+        ModItems.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         // Register ourselves for server and other game events we are interested in
@@ -46,17 +48,16 @@ public class OneModModpack
     }
 
     // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-           // event.accept(EXAMPLE_BLOCK_ITEM);
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.SAPPHIRE);
         }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
+    public void onServerStarting(ServerStartingEvent event) {
+
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
