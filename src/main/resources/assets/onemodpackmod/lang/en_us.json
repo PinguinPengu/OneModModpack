@@ -1,3 +1,6 @@
 {
-  "item.onemodpackmod.sapphire": "Sapphire"
+  "item.onemodpackmod.sapphire": "Sapphire",
+  "item.onemodpackmod.raw_sapphire": "Raw Sapphire",
+
+  "creativetab.modpack_tab": "Modpack Tab"
 }
